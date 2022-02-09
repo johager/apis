@@ -12,7 +12,7 @@ get http://swapi.dev/api/people
 === 2: population of the planet Alderaan
 
 get http://swapi.dev/api//planets
-"population": "2000000000"
+-> "population": "2000000000"
 
 === 3: name of the manufacturer of the Millennium Falcon
 
@@ -24,7 +24,7 @@ get http://swapi.dev/api/starships
 get http://swapi.dev/api/people
 -> "homeworld": "https://swapi.dev/api/planets/1/"
 
--species": [
+-> species": [
                 "https://swapi.dev/api/species/2/"
             ] >
 
@@ -44,22 +44,22 @@ get http://swapi.dev/api/people
                 "https://swapi.dev/api/films/6/"
             ]
 
-1:
+get https://swapi.dev/api/films/1
 -> "title": "A New Hope"
 
-2:
+get https://swapi.dev/api/films/2
 -> "title": "The Empire Strikes Back"
 
-3:
+get https://swapi.dev/api/films/3
 -> "title": "Return of the Jedi"
 
-4:
+get https://swapi.dev/api/films/4
 -> "title": "The Phantom Menace"
 
-5:
+get https://swapi.dev/api/films/5
 -> "title": "Attack of the Clones"
 
-6:
+get https://swapi.dev/api/films/6
 -> "title": "Revenge of the Sith"
 
 == 6: use the search query (the how to on the search query is at the bottom of the Getting Started section of the documentation) to get the information about the Millennium Falcon, it’s a starship
@@ -108,20 +108,17 @@ get http://swapi.dev/api/starships/?search=Millen
 === Social Mountain
 ===
 
-
 https://app.swaggerhub.com/apis/DevMountain/social_mountain/1.0.0#/posts/post_posts
 
-==1: Check if the POST request accept params, queries, and/or a body. Which one(s) and what information is it expecting to be sent?
+== 1: Check if the POST request accept params, queries, and/or a body. Which one(s) and what information is it expecting to be sent?
 
 -> it only takes a body of the form
-
 {
   "text": "The text used here will appear in the new post object"
 }
 
 == 2: What data type does the GET request return?
 -> Returns an array of all posts
-
 [
   {
     "id": 0,
@@ -134,10 +131,9 @@ https://app.swaggerhub.com/apis/DevMountain/social_mountain/1.0.0#/posts/post_po
 
 delete https://practiceapi.devmountain.com/api/555
 
-==4: List the possible response codes from the GET request at ‘/posts/filter’
+== 4: List the possible response codes from the GET request at ‘/posts/filter’
 
 -> 200 Returns an array of filtered posts
-
 [
   {
     "id": 0,
@@ -150,17 +146,19 @@ delete https://practiceapi.devmountain.com/api/555
 
 == 5: Create a post whose text is your name, record the URL and body here:
 
-put post https://practiceapi.devmountain.com/api/posts
-body
-{
-  "text": "My favorite color is green"
-}
-
+post https://practiceapi.devmountain.com/api/posts
 body
 {
   "text": "My name is James"
 }
 
+== 6: What would the URL and body object be to update the post you just made to contain your faovrite color instead of your name?
+
+put https://practiceapi.devmountain.com/api/posts?id=522
+body
+{
+  "text": "My favorite color is green"
+}
 
 == 7: What is the URL to get posts that contain the text “blue”?
 
@@ -172,7 +170,6 @@ get https://practiceapi.devmountain.com/api/posts
 
 Content-Type -> application/json; charset=utf-8
 
-
 == 9: What would cause a PUT request to return a 409 status?
 
 -> Request was missing req.query.id or req.body.text
@@ -182,6 +179,4 @@ Content-Type -> application/json; charset=utf-8
 
 get https://practiceapi.devmountain.com/api/posts?text=blue
 
--> it ignores the query
-
-
+-> it ignores the query and returns all posts
